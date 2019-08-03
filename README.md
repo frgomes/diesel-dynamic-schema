@@ -18,8 +18,7 @@ use Diesel's query builder. Keep in mind that many compile time guarantees are
 lost. We cannot verify that the tables/columns you ask for actually exist, or
 that the types you state are correct.
 
-Getting Started
----------------
+## Getting Started
 
 The main function used by this crate is `table`. Note that you must always
 provide an explicit select clause when using this crate.
@@ -34,6 +33,13 @@ let name = users.column::<Text, _>("name");
 users.select((id, name))
     .filter(name.eq("Sean"))
     .first(&conn)
+```
+
+## Building this package
+
+You can build and run integration tests like this:
+```bash
+$ cargo test --test integration_tests --features=diesel/sqlite
 ```
 
 ## Code of conduct
